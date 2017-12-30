@@ -1,0 +1,432 @@
+// Colors:
+$black        : #111
+$white        : #FFF
+$pink          : #cc4274
+$grey         : #f9f9fa
+$blue         : #157cff
+$background   : #FFF
+$link         : #111
+
+*, *:before, *:after
+	-moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+	margin: 0
+	padding: 0
+	border: 0
+	font-size: 100%
+	font: inherit
+	vertical-align: baseline
+
+body, input, select, textarea
+  font-family: "Source Sans Pro", Helvetica, sans-serif
+  font-size: 1rem
+  font-weight: 300
+  line-height: 1.65
+
+body
+	background: url(./../src/texture.png) center
+	background-size: cover
+	color: $black
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+	display: block
+
+h1, h2, h3, h4, h5, h6
+	font-family: "Roboto", sans-serif
+	font-weight: 300
+	line-height: 1.375
+	letter-spacing: -0.05em
+	margin: 0 0 1rem 0
+	& a
+		color: inherit
+		text-decoration: none
+
+h1
+	font-size: 3.5rem
+	line-height: 1.2
+
+h2
+	font-size: 2.25rem
+
+h3
+	font-size: 1.5rem
+
+h4
+	font-size: 1.1rem
+
+h5
+	font-size: 0.9rem
+
+h6
+	font-size: 0.7rem
+
+a
+	text-decoration: none
+	color: $link
+	text-transform: uppercase
+	font-weight: 500
+	font-size: 12px
+
+button
+  background: 0
+  border: 0
+  margin: 0
+  padding: 0
+
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+section
+  position: relative
+
+img
+	width: 100%
+	height: auto
+
+
+.bold
+	font-weight: bold
+
+.row
+  display: flex
+  flex-direction: row
+
+  .column
+    flex-direction: column
+
+// ###
+#header
+
+#home
+  background: url(./../src/home.jpg) center center
+  height: 100vh
+
+// Custom classes:
+
+.container
+	width: 1350px
+	margin: 0 auto
+
+// header
+
+header.mini
+	background: #FFF
+
+	.site-logo
+		position: relative
+		width: 100px
+		&::before
+	    width: 30px
+	    height: 5px
+
+header
+	position: fixed
+	width: 100%
+	z-index: 2
+
+	.container
+		justify-content: space-between
+		padding: 30px
+
+	.row
+		align-items: center
+
+	.site-logo
+		transition: .3s all ease
+		position: relative
+		width: 180px
+		&::before
+			content: ""
+			position: absolute
+			width: 50px
+			height: 15px
+			background: $pink
+			top: 100%
+			left: 50%
+			transform: translate(-50%)
+			transition: .3s ease
+
+	.main-nav ul
+	  display: flex
+	  li
+	    margin: 0 30px
+			a
+				font-size: 14px
+				font-weight: 900
+				text-transform: uppercase
+				position: relative
+				overflow: hidden
+				display: block
+
+				&:hover::before
+					transform: translate(100%)
+				&::before
+					content: ""
+					position: absolute
+					width: 100%
+					height: 13px
+					background: $pink
+					margin: -5px 0px
+					bottom: 0
+					z-index: -1
+					transition: .4s ease
+					transform: translate(-100%)
+
+
+	@mixin line($color, $deg, $ty, $t)
+		height: 3px
+		width: 100%
+		border-radius: 50px
+		background: $color
+		transform: rotateZ($deg+deg) translateY($ty+px) translate($t+deg)
+
+	#hamburger
+		display: none
+		width: 25px
+		height: 25px
+		cursor: pointer
+
+		div[class^="line"]
+			height: 3px
+			width: 100%
+			border-radius: 50px
+			background: $black
+			transition: .3s ease
+		.line-top
+			transform: translate(0px, -5px)
+		.line-middle
+		.line-bottom
+			transform: translate(0px, 5px)
+
+	#hamburger[data-active=true]
+		.line-top
+			transform: translate(0px, 2.5px) rotateZ(-45deg)
+		.line-middle
+			opacity: 0
+		.line-bottom
+			transform: translate(0px, -3.5px) rotateZ(45deg)
+
+#mobile-menu[data-active=true]
+	display: block
+#mobile-menu
+	position: fixed
+	top: 0
+	left: 0
+	display: none
+	z-index: 1
+	background: #FFF
+	width: 100%
+	height: 100%
+
+	.circle-bg
+		height: 0
+		width: 0
+		background: $white
+		border-radius: 50%
+
+	nav
+		position: absolute
+		top: 50%
+		left: 50%
+		text-align: center
+		transform: translate(-50%, -50%)
+
+		li a
+			font-size: 2rem
+			font-weight: 900
+			margin: 10px 0
+
+.home-section, section
+
+	.content
+
+		h2
+			font-size: 2.8rem
+
+		.home-image
+		  width: 250px
+
+		.center-middle
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			text-align: center
+
+		.dec-triangle::before
+		  content: ""
+		  position: absolute
+		  width: 0
+		  height: 0
+		  border-style: solid
+		  border-width: 0 170px 170px 0
+		  border-color: transparent $pink transparent transparent
+		  z-index: -1
+		  margin: 90px 55px
+
+	.navigation-arrow
+		position: absolute
+		left: 50%
+		transform: translate(-50%)
+		width: 50px
+		bottom: 35px
+		&:hover svg
+			transform: scale(.9)
+			fill: lighten($pink,10)
+
+		svg
+			transition: .2s ease
+			fill: $pink
+
+.our-story, section
+
+	.content
+		padding: 9rem 9rem
+		text-align: center
+
+		.decoration-line
+			padding: 0 0 20px
+			margin: 0 0 20px
+			position: relative
+			&::before
+				content: ""
+				position: absolute
+				left: 50%
+				transform: translate(-50%)
+				height: 8px
+				width: 35px
+				background: $pink
+				bottom: 0
+
+		h2
+			text-transform: uppercase
+			font-weight: 900
+			letter-spacing: 2px
+
+		.read-more
+			display: block
+			color: $pink
+			font-size: 1rem
+			font-weight: 900
+			margin: 15px 0 5px
+
+	.image
+		-moz-flex-grow: 0
+		-webkit-flex-grow: 0
+		-ms-flex-grow: 0
+		flex-grow: 0
+		-moz-flex-shrink: 0
+		-webkit-flex-shrink: 0
+		-ms-flex-shrink: 0
+		flex-shrink: 0
+		border-radius: 0
+		width: 55%
+		position: relative
+
+		img
+			-moz-object-fit: cover
+			-webkit-object-fit: cover
+			-ms-object-fit: cover
+			object-fit: cover
+			-moz-object-position: center
+			-webkit-object-position: center
+			-ms-object-position: center
+			object-position: center
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+
+section.full-image
+	width: 100%
+	height: 80vh
+
+	.image
+		height: inherit
+		width: inherit
+
+section.reversed
+	-moz-flex-direction: row-reverse
+	-webkit-flex-direction: row-reverse
+	-ms-flex-direction: row-reverse
+	flex-direction: row-reverse
+
+footer
+	padding: 120px 0 50px
+
+	.row
+		justify-content: space-between
+		align-items: flex-end
+
+	.contact
+		width: 250px
+
+		.text-block
+			margin: 0 0 15px
+
+		.site-logo
+			position: relative
+			width: 120px
+			margin: 0 auto 50px
+			&::before
+		    content: ""
+		    position: absolute
+		    width: 35px
+		    height: 10px
+		    background: $pink
+		    top: 100%
+		    left: 50%
+		    transform: translate(-50%)
+
+
+	.social ul
+		display: flex
+		li
+			margin: 0 10px
+
+
+
+@media only screen and (max-width: 1400px)
+	.container
+		width: 1150px
+
+@media only screen and (max-width: 1200px)
+	.our-story .content, section .content
+    padding: 4rem 2rem
+	.main-nav
+		display: none
+	header #hamburger
+		display: block
+	.container
+		width: 750px
+
+@media only screen and (max-width: 800px)
+	.our-story .content, section .content
+		padding: 3rem
+	header .site-logo
+		width: 100px
+		&::before
+			width: 25px
+			height: 5px
+	header .container
+		padding: 10px
+	.container
+		width: 350px
+	section.row, footer .row
+		flex-direction: column !important
+		align-items: inherit
+		.image
+			width: 100%
+			min-height: 300px
+	footer .contact
+		margin: 0 auto
+	footer .social ul
+		justify-content: center
+		margin: 25px 0
